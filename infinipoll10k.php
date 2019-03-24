@@ -2,7 +2,7 @@
 <?php
 
 //Allg. Einstellungen
-$moxa_ip = "192.168.123.115"; //MoxaBox_TCP_Server
+$moxa_ip = "192.168.123.115";  //ETH-RS232 converter in TCP_Server mode
 $moxa_port = 20108;
 $moxa_timeout = 10;
 $warte_bis_naechster_durchlauf = 4; //Zeit zw. zwei Abfragen in Sekunden
@@ -511,11 +511,10 @@ function batterie_nacht()
 
 function getalarms()
 {
-	global $debug;
+	global $debug, $debug2, $tmp_dir;
 	$moxa_ip = "192.168.123.115";
 	$moxa_port = 20108;
 	$moxa_timeout = 10;
-	$debug = true;
 	$fp = @fsockopen($moxa_ip, $moxa_port, $errno, $errstr, $moxa_timeout);
 	// Read fault register
 	// Command: ^P003WS<cr>: Query warning status
