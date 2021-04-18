@@ -14,7 +14,7 @@ $debug when set to true, will create a logfile stored in file named in variable 
 $debug2 will output additional debug infos on the cli when script get started here
 $storage_stat when set will create a file logging battery charge/discharge power for efficiency calculations. See script batteff.php for more.
 
-The main loop continously querying values from pv, grid and battery will be repeated after variable "$warte_bis_naechster_durchlauf" in seconds is expired.
+The main loop continously querying values from pv, grid and battery will be repeated after variable "$warte_bis_naechster_durchlauf" expires.
 
 Alarms get called every 100 loops and stored in file ALARM.txt, even at nighttime. Battery infos are updated during night time too and can be added as sensors in meterN to see live and historical values.
 
