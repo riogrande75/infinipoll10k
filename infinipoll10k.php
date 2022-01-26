@@ -49,22 +49,32 @@ if(!$fp) echo "FSOCK OPEN failed!!!\n";
 fwrite($fp, "^P003PI".chr(0x0d)); //QPI Protocol ID abfragen 6byte
 $antw = parse_antw();
 $protid = substr($antw[0],5,2);
-if($debug2) echo "ProtocolID: ".$protid."\n";
+if($debug) echo "ProtocolID: ".$protid."\n";
 // Serial abfragen
 fwrite($fp, "^P003ID".chr(0x0d)); //QPI Protocol ID abfragen 6byte
 $antw =  parse_antw();
 $serial = substr($antw[0],7,14);
-if($debug2) echo "Serial: ".$serial."\n";
+if($debug) echo "Serial: ".$serial."\n";
 // CPU Version abfragen
 fwrite($fp, "^P004VFW".chr(0x0d));
 $antw = parse_antw();
 $version = substr($antw[0],5,14);
-if($debug2) echo "CPU Version: ".$version."\n";
+if($debug) echo "CPU Version: ".$version."\n";
 // CPU secondary Version abfragen
 fwrite($fp, "^P005VFW2".chr(0x0d));
 $antw = parse_antw();
 $version2 = substr($antw[0],5,15);
-if($debug2) echo "CPU secondary version: ".$version2."\n";
+if($debug) echo "CPU secondary version: ".$version2."\n";
+// CPU FW Version time abfragen
+fwrite($fp, "^P005VFWT".chr(0x0d));
+$antw = parse_antw();
+$version3a = substr($antw[0],5,12);
+$version3b = $antw[1];
+$version3c = $antw[2];
+$version3d = $antw[3];
+$version3e = $antw[4];
+$version3f = $antw[5];
+if($debug) echo "CPU FW-Date: $version3a/$version3b/$version3c/$version3d/$version3e/$version3f\n";
 // Modell  abfragen
 fwrite($fp, "^P003MD".chr(0x0d));
 $antw = parse_antw();
