@@ -342,7 +342,6 @@ while(true)
         if($powerdir_code=="1") $powerdir="input";
         if($powerdir_code=="2") $powerdir="output";
 
-
 	//INGS command 02.01.2022
         fwrite($fp, "^P005INGS".chr(0x0d));
         $antw = parse_antw();
@@ -373,10 +372,12 @@ while(true)
 	echo " NLine_Cur $ings_NLintCur\n";
 	}
 	//Print RTCP Command output 12.02.2022
-	if($debug2){ 
-    	fwrite($fp, "^P005RTCP".chr(0x0d)); // RealTimeControllingParallel
-    	$antw = parse_antw();
-    	echo " RTCP: $antw \n";
+	if($debug2){ //Print RTCP Command output
+	fwrite($fp, "^P005RTCP".chr(0x0d)); // RealTimeControllingParallel
+	$antw = parse_antw();
+	$rtcp = "";
+	for($i = 1; $i <= 12; $i++) $rtcp = $rtcp.$antw[$i]." ";
+	echo " RTCP: $rtcp \n";
 	}
 	// EMINFO command 24.01.2022
 	fwrite($fp, "^P007EMINFO".chr(0x0d));
