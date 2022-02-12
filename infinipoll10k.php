@@ -372,6 +372,12 @@ while(true)
 	echo " NBusAvg_V $ings_PBusAvgV\n";
 	echo " NLine_Cur $ings_NLintCur\n";
 	}
+	//Print RTCP Command output 12.02.2022
+	if($debug2){ 
+    	fwrite($fp, "^P005RTCP".chr(0x0d)); // RealTimeControllingParallel
+    	$antw = parse_antw();
+    	echo " RTCP: $antw \n";
+	}
 	// EMINFO command 24.01.2022
 	fwrite($fp, "^P007EMINFO".chr(0x0d));
         $antw = parse_antw();
