@@ -382,30 +382,30 @@ while(true)
         //print_r($antw);
         If(sizeof($antw) == 13)
         {
-        $bms_batvolt = substr($antw[0],5,4);
+        $bms_batvolt = $antw[0];
         $bms_batperc = $antw[1];
-        $bms_batcurr = $antw[2];
-        $bms_warn = $antw[3];
-        $bms_forcechg = $antw[4];
-        $bms_cvvolt = $antw[5];
-        $bms_floatvolt = $antw[6];
-        $bms_maxchamps = $antw[7];
-        $bms_batstopdisflag = $antw[8];
-        $bms_batstopchaflag = $antw[9];
-        $bms_batcutoffvol = $antw[10];
-        $bms_maxdischamps = $antw[11];
-        $bms_12 = $antw[12];
+        $bms_direction = $antw[2];
+        $bms_batcurr = $antw[3];
+        $bms_warn = $antw[4];
+        $bms_forcechg = $antw[5];
+        $bms_cvvolt = $antw[6];
+        $bms_floatvolt = $antw[7];
+        $bms_maxchamps = ($antw[8] / 10);
+        $bms_batstopdisflag = $antw[9];
+        $bms_batstopchaflag = $antw[10];
+        $bms_batcutoffvol = $antw[11];
+        $bms_maxdischamps = $antw[12];
 
         $bmsc = "";
         for($i = 0; $i <= 12; $i++) $bmsc = $bmsc.$antw[$i]." ";
 
-        if($debug){ //Print BMS Command output
+        if($debug2){ //Print BMS Command output
         echo "BMS Commando:\n";
         echo "BMS Battery Voltage: $bms_batvolt\n";
         echo "BMS Battery Percent: $bms_batperc\n";
         echo "BMS Battery Current: $bms_batcurr\n";
         echo "BMS Warning Code   : $bms_warn\n";
-        echo "BMS Froce Charge   : $bms_forcechg\n";
+        echo "BMS Force Charge   : $bms_forcechg\n";
         echo "BMS CV Voltage     : $bms_cvvolt\n";
         echo "BMS Float Voltage  : $bms_floatvolt\n";
         echo "BMS Max.Charge Amps: $bms_maxchamps\n";
@@ -413,7 +413,6 @@ while(true)
         echo "BMS BatStopChgFlag : $bms_batstopchaflag\n";
         echo "BMS ButCutoffVolt  : $bms_batcutoffvol\n";
         echo "BMS BatMaxDisChAmps: $bms_maxdischamps\n";
-        echo "BMS 12: $bms_12\n";
         }
         }
         //INGS command 02.01.2022
