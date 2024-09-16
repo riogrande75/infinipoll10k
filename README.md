@@ -19,9 +19,13 @@ The main loop continously querying values from pv, grid and battery will be repe
 Alarms get called every 100 loops and stored in file ALARM.txt, even at nighttime. Battery infos are updated during night time too and can be added as sensors in meterN to see live and historical values.
 
 Added some helping scripts:
+
   batteff.php - Calculate battery efficency from logged values
+  
   battery_calibration_10k.php - Calibrate inverter battery port voltage measurement
+  
   infinipoll10k_bms.php - add BMS fed from script readmqttbms.php
+  
   notladen_ein.php/notladen_aus.php - Enable emergency charging of batteries from grid
   
 Any improvements are very welcome.
